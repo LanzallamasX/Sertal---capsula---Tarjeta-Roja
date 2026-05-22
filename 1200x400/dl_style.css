@@ -186,12 +186,21 @@ img{
   top: 0px;
 }
 
-#tribuna, #character-1, #endFrame{
+#character-1, #endFrame{
   width:1200px;
   height:400px;
   left: 0px;
   top: 0px;
 }
+
+#tribuna{
+  width:1200px;
+  height:400px;
+  left: 0px;
+  top: 0px;
+  filter: blur(2px);
+}
+
 
 #confetti-wrap{
   position:absolute;

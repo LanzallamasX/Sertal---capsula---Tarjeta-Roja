@@ -187,11 +187,19 @@ img{
   top: 0px;
 }
 
-#tribuna, #character-1, #endFrame{
+#character-1, #endFrame{
   width:970px;
   height:90px;
   left: 0px;
   top: 0px;
+}
+
+#tribuna{
+  width:970px;
+  height:90px;
+  left: 0px;
+  top: 0px;
+  filter: blur(1px);
 }
 
 #confetti-wrap{

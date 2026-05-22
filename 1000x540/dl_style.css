@@ -191,6 +191,7 @@ img{
   height:540px;
   left: 0px;
   top: 0px;
+  filter: blur(2px);
 }
 
 
