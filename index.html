@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Sertal Ads</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:#111;
+      color:#fff;
+      padding:40px 20px;
+      overflow-x:hidden;
+    }
+
+    .wrapper{
+      max-width:1400px;
+      margin:auto;
+    }
+
+    h1{
+      font-size:48px;
+      margin-bottom:10px;
+      font-weight:900;
+      letter-spacing:-1px;
+    }
+
+    p{
+      color:#999;
+      margin-bottom:40px;
+      font-size:16px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:24px;
+    }
+
+    .card{
+      position:relative;
+      background:#1b1b1b;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;
+      overflow:hidden;
+      transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+      text-decoration:none;
+      color:#fff;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:#ffb71b;
+      box-shadow:0 20px 40px rgba(0,0,0,.35);
+    }
+
+    .preview{
+      width:100%;
+      height:240px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#0b0b0b;
+      padding:20px;
+    }
+
+    /*
+      CARD VISUAL
+    */
+
+    .fake-ad{
+      width:180px;
+      height:180px;
+      border-radius:18px;
+      overflow:hidden;
+      position:relative;
+      border:2px solid rgba(255,255,255,.15);
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      padding:18px;
+      isolation:isolate;
+      background:#ffb71b;
+    }
+
+    /*
+      IMAGEN BLUREADA
+    */
+
+    .bg-image{
+      position:absolute;
+      inset:0;
+      background:url('./preview.jpg') center center / cover no-repeat;
+      filter:blur(3px);
+      transform:scale(1.15);
+      opacity:.9;
+      z-index:0;
+    }
+
+    /*
+      OVERLAY ROJO
+    */
+
+    .overlay{
+      position:absolute;
+      inset:0;
+
+
+      mix-blend-mode:multiply;
+      z-index:1;
+    }
+
+    /*
+      SILUETA PROPORCIONAL
+    */
+
+    .ratio{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      border:2px dashed rgba(255,255,255,.4);
+      border-radius:10px;
+      z-index:2;
+      pointer-events:none;
+    }
+
+    /*
+      CONTENIDO
+    */
+
+    .brand,
+    .title,
+    .cta{
+      position:relative;
+      z-index:3;
+    }
+
+    .brand{
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:2px;
+      opacity:.95;
+    }
+
+    .title{
+      font-size:26px;
+      line-height:.95;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:-1px;
+    }
+
+    .cta{
+      align-self:flex-start;
+      background:#fff;
+      color:#ffb71b;
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:1px;
+    }
+
+    .info{
+      padding:18px;
+    }
+
+    .size{
+      font-size:22px;
+      font-weight:800;
+      margin-bottom:8px;
+    }
+
+    .open{
+      font-size:14px;
+      color:#ffb71b;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <h1>Sertal Ads</h1>
+
+    <p>
+      Tarjeta Roja
+    </p>
+
+    <div class="grid" id="grid"></div>
+
+  </div>
+
+  <script>
+
+    const sizes = [
+      "1000x540",
+      "1200x400",
+      "1300x250",
+      "200x500",
+      "240x600",
+      "300x250",
+      "300x600",
+      "320x100",
+      "728x90",
+      "750x300",
+      "800x600",
+      "900x400",
+      "970x250",
+      "970x90"
+    ];
+
+    const grid = document.getElementById('grid');
+
+    sizes.forEach(size => {
+
+      const [w,h] = size.split('x').map(Number);
+
+      /*
+        ESCALA SOLO LA SILUETA
+      */
+
+      const scale = 130 / Math.max(w,h);
+
+      const ratioW = w * scale;
+      const ratioH = h * scale;
+
+      const card = document.createElement('a');
+
+      card.className = 'card';
+
+      /*
+        LINK A CADA CARPETA
+      */
+
+      card.href = `./${size}/index.html`;
+
+      card.innerHTML = `
+      
+        <div class="preview">
+
+          <div class="fake-ad">
+
+            <div class="bg-image"></div>
+
+            <div class="overlay"></div>
+
+            <div 
+              class="ratio"
+              style="
+                width:${ratioW}px;
+                height:${ratioH}px;
+              "
+            ></div>
+
+            <div class="brand">
+              SERTAL
+            </div>
+
+            <div class="title">
+              Tarjeta<br>
+              Roja
+            </div>
+
+            <div class="cta">
+              VER AD
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="info">
+
+          <div class="size">
+            ${size}
+          </div>
+
+          <div class="open">
+            Open folder →
+          </div>
+
+        </div>
+
+      `;
+
+      grid.appendChild(card);
+
+    });
+
+  </script>
+
+</body>
+</html>
