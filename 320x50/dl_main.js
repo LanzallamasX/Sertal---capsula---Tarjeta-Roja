@@ -88,7 +88,7 @@ tl_
 .from("#txt-1-2", 0.65, {y: 20, autoAlpha: 0, ease: "power3.out"}, "<+0.2")
 
 
-.from("#wrapbg", 8, {scale: 2.2, transformOrigin: "60% 20%", ease: "power2.inOut"}, "<")
+.from("#wrapbg", 8, {scale: 2.2, transformOrigin: "75% 30%", ease: "power2.inOut"}, "<")
 .from("#character-1", 8, {scale: 1.7, x: 100, transformOrigin: "30% 40%", ease: "power2.inOut"}, "<")
 
 .to("#txt-1-1, #txt-1-2", 0.65, {y: 20, autoAlpha: 0, ease: "power3.out"}, "<+3")
@@ -121,7 +121,6 @@ return tl_
 
 }
 
-
 function triggerConfetti(){
 
   const wrap = document.querySelector("#confetti-wrap");
@@ -144,9 +143,9 @@ function triggerConfetti(){
 
     gsap.set(el,{
       backgroundColor:colors[Math.floor(Math.random() * colors.length)],
-      left:gsap.utils.random(-20,350),
-      top:gsap.utils.random(-200,300),
-      scale:gsap.utils.random(0.5,1.3),
+      left:gsap.utils.random(-20,1300),
+      top:gsap.utils.random(-200,800),
+      scale:gsap.utils.random(1,2.2),
       rotation:gsap.utils.random(-180,180),
       rotationX:gsap.utils.random(-360,360),
       rotationY:gsap.utils.random(-360,360),
@@ -197,8 +196,10 @@ function initHandlers() {
 
 var clicktag = document.getElementById('clickTag');
     clicktag.addEventListener('mouseup', function(event) {
-                 
-    window.open(window.clickTag,'_blank');            
+        
+         
+        window.open(window.clickTag,'_blank');
+        
           
     })
 

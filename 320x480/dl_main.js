@@ -81,17 +81,18 @@ var tl_ = gsap.timeline();
 tl_.timeScale( 1 );  
 tl_
 
-.from("#tribuna", 6, {x: -100, repeat: -1, yoyo: true, ease: "power1.out"}, "<")
+.from("#tribuna", 6, {x: -80, repeat: -1, yoyo: true, ease: "power1.out"}, "<")
 .from("#arbitro", 4, {y: 20, scale: 1.2, ease: "power3.out"}, "<")
 
 .from("#txt-1-1", 0.65, {y: 20, autoAlpha: 0, ease: "power3.out"}, "<+0.25")
 .from("#txt-1-2", 0.65, {y: 20, autoAlpha: 0, ease: "power3.out"}, "<+0.2")
+.from("#txt-1-3", 0.65, {y: 20, autoAlpha: 0, ease: "power3.out"}, "<+0.2")
 
 
-.from("#wrapbg", 8, {scale: 2.2, transformOrigin: "60% 20%", ease: "power2.inOut"}, "<")
+.from("#wrapbg", 8, {scale: 2.5, transformOrigin: "40% 28%", ease: "power2.inOut"}, "<")
 .from("#character-1", 8, {scale: 1.7, x: 100, transformOrigin: "30% 40%", ease: "power2.inOut"}, "<")
 
-.to("#txt-1-1, #txt-1-2", 0.65, {y: 20, autoAlpha: 0, ease: "power3.out"}, "<+3")
+.to("#txt-1-1, #txt-1-2, #txt-1-3", 0.65, {y: 20, autoAlpha: 0, ease: "power3.out"}, "<+3")
 
 
 .from("#txt-2-1", 0.65, {y: 20, autoAlpha: 0, ease: "power3.out"}, "<+0.25")
@@ -107,6 +108,12 @@ tl_
 .from("#txt-3-1", 0.65, { y: 20, autoAlpha: 0, ease: "power3.out"}, "<")
 .to("#sertal", 0.65, { autoAlpha: 0, ease: "power3.out"}, "<")
 .from("#roem", 0.65, { autoAlpha: 0, ease: "power3.out"}, "<+0.25")
+
+.from("#plusPill", 0.35, { autoAlpha: 0, x: 100, scale: 0, ease: "power3.out"}, "<+0.25")
+.from("#bgPill", 0.65, { scale: 0, ease: "power3.out"}, "<+0.25")
+.from("#textPill-1", 0.65, { y: 10, autoAlpha: 0, ease: "power3.out"}, "<+0.1")
+.from("#textPill-2", 0.65, { y: 10, autoAlpha: 0, ease: "power3.out"}, "<+0.1")
+
 
 .add( function() {tl_textEnd.play()}, "<+0.3" )
 
@@ -144,9 +151,9 @@ function triggerConfetti(){
 
     gsap.set(el,{
       backgroundColor:colors[Math.floor(Math.random() * colors.length)],
-      left:gsap.utils.random(-20,350),
-      top:gsap.utils.random(-200,300),
-      scale:gsap.utils.random(0.5,1.3),
+      left:gsap.utils.random(-20,280),
+      top:gsap.utils.random(-200,400),
+      scale:gsap.utils.random(0.6,1.4),
       rotation:gsap.utils.random(-180,180),
       rotationX:gsap.utils.random(-360,360),
       rotationY:gsap.utils.random(-360,360),
@@ -169,7 +176,7 @@ function triggerConfetti(){
       x:`+=${gsap.utils.random(-120,120)}`,
       rotation:gsap.utils.random(-720,720),
       rotationX:`+=${gsap.utils.random(-720,720)}`,
-      rotationY:`+=${gsap.utils.random(-1300,1300)}`,
+      rotationY:`+=${gsap.utils.random(-720,720)}`,
       ease:"power1.out",
       duration:gsap.utils.random(1.8,3)
     },0);
@@ -197,8 +204,10 @@ function initHandlers() {
 
 var clicktag = document.getElementById('clickTag');
     clicktag.addEventListener('mouseup', function(event) {
-                 
-    window.open(window.clickTag,'_blank');            
+        
+         
+        window.open(window.clickTag,'_blank');
+        
           
     })
 
