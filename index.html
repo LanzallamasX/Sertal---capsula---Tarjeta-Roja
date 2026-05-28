@@ -395,6 +395,7 @@
       "970x90"
     ];
 
+
     const grid = document.getElementById('grid');
     const previewModal = document.getElementById('preview-modal');
     const previewFrame = document.getElementById('preview-frame');
@@ -529,6 +530,7 @@
 
       card.addEventListener('click', () => {
         openPreview(size, w, h);
+         window.open(`./${size}/index.html`, '_blank');
       });
 
       grid.appendChild(card);

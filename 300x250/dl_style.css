@@ -44,6 +44,7 @@ body {
     display: block !important;
     background: #165ED3;
     transform: translate3d(0px, 0px, 0px);
+    position: relative;
 }
 
 strong {
@@ -152,7 +153,8 @@ img{
 #wrapText{
     width: 177px;
     left: 59px;
-    top: 19px;
+    top: 160px;
+    z-index: 10;
 }
 
 #disclaimer{
